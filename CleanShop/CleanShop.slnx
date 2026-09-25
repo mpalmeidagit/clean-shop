@@ -1,28 +1,28 @@
 <Solution>
   <Folder Name="/src/Application/">
-    <Project Path="Application/CleanShop.DTO/CleanShop.DTO.csproj" Id="b38c6bd3-3111-459b-bee0-5ec170aabbae" />
-    <Project Path="Application/CleanShop.Interface/CleanShop.Interface.csproj" Id="3be76d53-b14e-4cd2-87c1-13ccdc35327b" />
-    <Project Path="Application/CleanShop.Main/CleanShop.Main.csproj" Id="cc60d775-1d5d-4524-94f8-ee08ef4c13cd" />
-    <Project Path="Application/CleanShop.Validator/CleanShop.Validator.csproj" Id="740a8877-2182-4fad-af44-89faf9a650bd" />
+    <Project Path="Application/CleanShop.Application.DTO/CleanShop.Application.DTO.csproj" Id="b38c6bd3-3111-459b-bee0-5ec170aabbae" />
+    <Project Path="Application/CleanShop.Application.Interface/CleanShop.Application.Interface.csproj" Id="3be76d53-b14e-4cd2-87c1-13ccdc35327b" />
+    <Project Path="Application/CleanShop.Application.Main/CleanShop.Application.Main.csproj" Id="cc60d775-1d5d-4524-94f8-ee08ef4c13cd" />
+    <Project Path="Application/CleanShop.Application.Validator/CleanShop.Application.Validator.csproj" Id="740a8877-2182-4fad-af44-89faf9a650bd" />
   </Folder>
   <Folder Name="/src/Domain/">
-    <Project Path="Domain/CleanShop.Core/CleanShop.Core.csproj" Id="22dbcbd7-4486-4d3e-9f85-a19c6bc4702f" />
-    <Project Path="Domain/CleanShop.Entity/CleanShop.Entity.csproj" Id="5851327b-c169-4275-be82-5ca68e2ebf8c" />
-    <Project Path="Domain/CleanShop.Interface/CleanShop.Interface.csproj" Id="5694d1ab-300e-4a33-97fa-725844887a1c" />
+    <Project Path="Domain/CleanShop.Domain.Core/CleanShop.Domain.Core.csproj" Id="22dbcbd7-4486-4d3e-9f85-a19c6bc4702f" />
+    <Project Path="Domain/CleanShop.Domain.Entity/CleanShop.Domain.Entity.csproj" Id="5851327b-c169-4275-be82-5ca68e2ebf8c" />
+    <Project Path="Domain/CleanShop.Domain.Interface/CleanShop.Domain.Interface.csproj" Id="5694d1ab-300e-4a33-97fa-725844887a1c" />
   </Folder>
   <Folder Name="/src/Infrastructure/">
-    <Project Path="Infrastructure/CleanShop.Data/CleanShop.Data.csproj" Id="80ba6ba2-b487-4a86-accf-5cde133842ec" />
-    <Project Path="Infrastructure/CleanShop.Interface/CleanShop.Interface.csproj" Id="87b45744-d2e6-4177-af0f-c3efca893602" />
-    <Project Path="Infrastructure/CleanShop.Repository/CleanShop.Repository.csproj" Id="c6a8a03c-c2ed-4372-86c0-190704032ebf" />
+    <Project Path="Infrastructure/CleanShop.Infrastructure.Data/CleanShop.Infrastructure.Data.csproj" Id="80ba6ba2-b487-4a86-accf-5cde133842ec" />
+    <Project Path="Infrastructure/CleanShop.Infrastructure.Interface/CleanShop.Infrastructure.Interface.csproj" Id="87b45744-d2e6-4177-af0f-c3efca893602" />
+    <Project Path="Infrastructure/CleanShop.Infrastructure.Repository/CleanShop.Infrastructure.Repository.csproj" Id="c6a8a03c-c2ed-4372-86c0-190704032ebf" />
   </Folder>
   <Folder Name="/src/Test/">
-    <Project Path="Test/CleanShop.IntegrationTests/CleanShop.IntegrationTests.csproj" Id="f2f2f703-92c6-4a3d-8731-82ae0de4a511" />
-    <Project Path="Test/CleanShop.UnitTests/CleanShop.UnitTests.csproj" Id="7c2b96e2-86c1-45d5-8cf3-aa6f1f8c654c" />
+    <Project Path="Test/CleanShop.Test.IntegrationTests/CleanShop.Test.IntegrationTests.csproj" Id="f2f2f703-92c6-4a3d-8731-82ae0de4a511" />
+    <Project Path="Test/CleanShop.Test.UnitTests/CleanShop.Test.UnitTests.csproj" Id="7c2b96e2-86c1-45d5-8cf3-aa6f1f8c654c" />
   </Folder>
   <Folder Name="/src/Transversal/">
-    <Project Path="Transversal/CleanShop.Common/CleanShop.Common.csproj" Id="dcfb18ff-2a62-42e4-abb4-b57a51bd5759" />
-    <Project Path="Transversal/CleanShop.Logging/CleanShop.Logging.csproj" Id="dc4cc8e9-c200-4457-8133-1e6b124c2a62" />
-    <Project Path="Transversal/CleanShop.Mapper/CleanShop.Mapper.csproj" Id="4c8350a7-8ca2-4305-ab22-80f4c8b1a8b2" />
+    <Project Path="Transversal/CleanShop.Transversal.Common/CleanShop.Transversal.Common.csproj" Id="dcfb18ff-2a62-42e4-abb4-b57a51bd5759" />
+    <Project Path="Transversal/CleanShop.Transversal.Logging/CleanShop.Transversal.Logging.csproj" Id="dc4cc8e9-c200-4457-8133-1e6b124c2a62" />
+    <Project Path="Transversal/CleanShop.Transversal.Mapper/CleanShop.Transversal.Mapper.csproj" Id="4c8350a7-8ca2-4305-ab22-80f4c8b1a8b2" />
   </Folder>
   <Folder Name="/src/WebApi/">
     <Project Path="WebApi/CleanShop.WebApi/CleanShop.WebApi.csproj" Id="467d910e-3b94-4a6c-bb7a-8c9b5f784382" />

@@ -1,4 +1,4 @@
-﻿namespace CleanShop.IntegrationTests
+﻿namespace CleanShop.Test.IntegrationTests
 {
     [TestClass]
     public sealed class Test1

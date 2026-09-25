@@ -1,4 +1,4 @@
-﻿using CleanShop.Entity;
+﻿using CleanShop.Domain.Entity;
 
 namespace CleanShop.Domain.Interface;
 
