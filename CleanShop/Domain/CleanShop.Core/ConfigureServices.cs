@@ -1,7 +1,7 @@
 ﻿using CleanShop.Domain.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanShop.Domain.Core;
+namespace CleanShop.Core;
 
 public static class ConfigureServices
 {

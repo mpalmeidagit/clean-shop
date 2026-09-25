@@ -1,4 +1,4 @@
-﻿namespace CleanShop.Domain.Entity;
+﻿namespace CleanShop.Entity;
 
 public class Customer
 {
