@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\CleanShop.Domain.Entity\CleanShop.Domain.Entity.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>CleanShop.Application.Interface</AssemblyName>
-    <RootNamespace>CleanShop.Application.Interface</RootNamespace>
   </PropertyGroup>
 
 </Project>

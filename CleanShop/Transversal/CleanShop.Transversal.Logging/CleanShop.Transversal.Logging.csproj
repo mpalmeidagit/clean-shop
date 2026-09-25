@@ -4,8 +4,6 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>CleanShop.Infrastructure.Interface</AssemblyName>
-    <RootNamespace>CleanShop.Infrastructure.Interface</RootNamespace>
   </PropertyGroup>
 
 </Project>

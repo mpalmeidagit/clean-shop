@@ -1,7 +1,7 @@
-﻿using CleanShop.Entity;
+﻿using CleanShop.Domain.Entity;
 using CleanShop.Domain.Interface;
 
-namespace CleanShop.Core;
+namespace CleanShop.Domain.Core;
 
 public class CustomersDomain : ICustomersDomain
 {

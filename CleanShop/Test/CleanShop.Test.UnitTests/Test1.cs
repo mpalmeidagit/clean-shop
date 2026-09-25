@@ -1,4 +1,4 @@
-﻿namespace CleanShop.UnitTests
+﻿namespace CleanShop.Test.UnitTests
 {
     [TestClass]
     public sealed class Test1
