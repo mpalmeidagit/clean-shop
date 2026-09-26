@@ -11,7 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Domain\CleanShop.Domain.Entity\CleanShop.Domain.Entity.csproj" />
     <ProjectReference Include="..\..\Domain\CleanShop.Domain.Interface\CleanShop.Domain.Interface.csproj" />
+    <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Common\CleanShop.Transversal.Common.csproj" />
+    <ProjectReference Include="..\CleanShop.Application.DTO\CleanShop.Application.DTO.csproj" />
     <ProjectReference Include="..\CleanShop.Application.Interface\CleanShop.Application.Interface.csproj" />
   </ItemGroup>
 
