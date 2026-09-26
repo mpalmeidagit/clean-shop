@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\CleanShop.Domain.Interface\CleanShop.Domain.Interface.csproj" />
+    <ProjectReference Include="..\CleanShop.Application.Interface\CleanShop.Application.Interface.csproj" />
+  </ItemGroup>
+
 </Project>

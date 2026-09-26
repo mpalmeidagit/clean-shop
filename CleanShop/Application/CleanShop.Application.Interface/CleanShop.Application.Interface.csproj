@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Common\CleanShop.Transversal.Common.csproj" />
+    <ProjectReference Include="..\CleanShop.Application.DTO\CleanShop.Application.DTO.csproj" />
+  </ItemGroup>
+
 </Project>
