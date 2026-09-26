@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
         c.ShowExtensions();
     });
 
-    ///app.MapOpenApi();
+    //app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
