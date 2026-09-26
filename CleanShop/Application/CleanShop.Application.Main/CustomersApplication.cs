@@ -71,6 +71,11 @@ public class CustomersApplication : ICustomersApplication
                 response.IsSuccess = true;
                 response.Message = "Eliminação bem-sucedida.";
             }
+            else
+            {
+                response.IsSuccess = true;
+                response.Message = $"Cliente com código: {customerId} não existe.";
+            }
         }
         catch (Exception e)
         {
@@ -91,6 +96,11 @@ public class CustomersApplication : ICustomersApplication
             {
                 response.IsSuccess = true;
                 response.Message = "Consulta bem-sucedida.";
+            }
+            else
+            {
+                response.IsSuccess = true;
+                response.Message = $"Cliente com código: {customerId} não existe.";
             }
         }
         catch (Exception e)

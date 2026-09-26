@@ -25,7 +25,7 @@ public class CustomersDomain : ICustomersDomain
 
     public async Task<Customer> GetAsync(string customerId)
     {
-        return await GetAsync(customerId);
+        return await _unitOfWork.Customers.GetAsync(customerId);
     }
 
     public async Task<bool> InsertAsync(Customer customer)
