@@ -1,32 +1,40 @@
 ﻿using CleanShop.Domain.Entity;
 using CleanShop.Domain.Interface;
+using CleanShop.Infrastructure.Interface;
 
 namespace CleanShop.Domain.Core;
 
 public class CustomersDomain : ICustomersDomain
 {
-    public Task<bool> DeleteAsync(string customerId)
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CustomersDomain(IUnitOfWork unitOfWork)
     {
-        throw new NotImplementedException();
+        _unitOfWork = unitOfWork;
     }
 
-    public Task<IEnumerable<Customer>> GetAllAsync()
+    public async Task<bool> DeleteAsync(string customerId)
     {
-        throw new NotImplementedException();
+        return await _unitOfWork.Customers.DeleteAsync(customerId);
     }
 
-    public Task<Customer> GetAsync(string customerId)
+    public async Task<IEnumerable<Customer>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _unitOfWork.Customers.GetAllAsync();
     }
 
-    public Task<bool> InsertAsync(Customer customer)
+    public async Task<Customer> GetAsync(string customerId)
     {
-        throw new NotImplementedException();
+        return await GetAsync(customerId);
     }
 
-    public Task<bool> UpdateAsync(Customer customer)
+    public async Task<bool> InsertAsync(Customer customer)
     {
-        throw new NotImplementedException();
+        return await _unitOfWork.Customers.InsertAsync(customer);
+    }
+
+    public async Task<bool> UpdateAsync(Customer customer)
+    {
+        return await _unitOfWork.Customers.UpdateAsync(customer);
     }
 }

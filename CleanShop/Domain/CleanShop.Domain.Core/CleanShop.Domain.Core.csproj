@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\CleanShop.Infrastructure.Interface\CleanShop.Infrastructure.Interface.csproj" />
     <ProjectReference Include="..\CleanShop.Domain.Entity\CleanShop.Domain.Entity.csproj" />
     <ProjectReference Include="..\CleanShop.Domain.Interface\CleanShop.Domain.Interface.csproj" />
   </ItemGroup>
