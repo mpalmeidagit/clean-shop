@@ -6,12 +6,15 @@ namespace CleanShop.Infrastructure.Repository;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddSingleton<DapperContext>();
-        services.AddScoped<ICustomersRepository, CustomersRepository>();
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        public IServiceCollection AddInfrastructureServices()
+        {
+            services.AddSingleton<DapperContext>();
+            services.AddScoped<ICustomersRepository, CustomersRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        return services;
+            return services;
+        }
     }
 }

@@ -6,11 +6,14 @@ namespace CleanShop.Application.Main;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddScoped<ICustomersApplication, CustomersApplication>();
-        services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
+        public IServiceCollection AddApplicationServices()
+        {
+            services.AddScoped<ICustomersApplication, CustomersApplication>();
+            services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
 
-        return services;
+            return services;
+        }
     }
 }

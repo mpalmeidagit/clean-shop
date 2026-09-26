@@ -5,9 +5,13 @@ namespace CleanShop.Domain.Core;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddDomainServices(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddScoped<ICustomersDomain, CustomersDomain>();
-        return services;
+        public IServiceCollection AddDomainServices()
+        {
+            services.AddScoped<ICustomersDomain, CustomersDomain>();
+
+            return services;
+        }
     }
 }
