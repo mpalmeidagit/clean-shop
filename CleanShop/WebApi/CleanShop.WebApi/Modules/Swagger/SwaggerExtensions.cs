@@ -1,41 +1,75 @@
-﻿
 using Microsoft.OpenApi;
 using System.Reflection;
 
 namespace CleanShop.WebApi.Modules.Swagger;
 
+/// <summary>
+/// Configuração da documentação da API com Swagger (Swashbuckle).
+/// </summary>
 public static class SwaggerExtensions
 {
-    public static IServiceCollection AddSwagger(this IServiceCollection services)
+    /// <param name="builder">Builder da aplicação.</param>
+    extension(IHostApplicationBuilder builder)
     {
-        services.AddSwaggerGen(c =>
+        /// <summary>
+        /// Registra o gerador do documento Swagger da API.
+        /// </summary>
+        public IHostApplicationBuilder AddSwagger()
         {
-            c.SwaggerDoc("v1", new OpenApiInfo
+            builder.Services.AddSwaggerGen(c =>
             {
-                Version = "v1",
-                Title = "Clean Shop - Mercado de APIs de serviços de tecnologia",
-                Description = "Um simples example ASP.NET Core Web API. ",
-                TermsOfService = new Uri("https://cleanshop@com.br/termos"),
-                Contact = new OpenApiContact
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Name = "Clean Shop",
-                    Email = "cleanshop@com.br",
-                    Url = new Uri("https://cleanshop@com.br/faleconosco")
-                },
-                License = new OpenApiLicense
-                {
-                    Name = "Utilizar sob CLSHOP",
-                    Url = new Uri("https://cleanshop@com.br/licenca")
-                }
+                    Version = "v1",
+                    Title = "Clean Shop - Mercado de APIs de serviços de tecnologia",
+                    Description = "Um simples example ASP.NET Core Web API. ",
+                    TermsOfService = new Uri("https://cleanshop@com.br/termos"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Clean Shop",
+                        Email = "cleanshop@com.br",
+                        Url = new Uri("https://cleanshop@com.br/faleconosco")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Utilizar sob CLSHOP",
+                        Url = new Uri("https://cleanshop@com.br/licenca")
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+                c.EnableAnnotations();
             });
 
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            c.IncludeXmlComments(xmlPath);
+            return builder;
+        }
+    }
 
-            c.EnableAnnotations();
-        });
+    /// <param name="app">Aplicação web.</param>
+    extension(WebApplication app)
+    {
+        /// <summary>
+        /// Expõe o documento Swagger e a Swagger UI (somente em Development).
+        /// </summary>
+        public WebApplication UseSwaggerDocumentation()
+        {
+            if (!app.Environment.IsDevelopment())
+                return app;
 
-        return services;
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                c.RoutePrefix = "swagger";
+                c.DisplayRequestDuration();
+                c.EnableDeepLinking();
+                c.ShowExtensions();
+            });
+
+            return app;
+        }
     }
 }
