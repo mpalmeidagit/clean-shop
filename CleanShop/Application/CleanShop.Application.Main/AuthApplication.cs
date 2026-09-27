@@ -4,6 +4,7 @@ using CleanShop.Application.Interface;
 using CleanShop.Domain.Entity;
 using CleanShop.Domain.Interface;
 using CleanShop.Transversal.Common;
+using CleanShop.Transversal.Logging;
 
 namespace CleanShop.Application.Main;
 
@@ -12,12 +13,18 @@ public class AuthApplication : IAuthApplication
     private readonly IUsersDomain _usersDomain;
     private readonly IJwtService _jwtService;
     private readonly IMapper _mapper;
+    private readonly IAppLogger<AuthApplication> _logger;
 
-    public AuthApplication(IUsersDomain usersDomain, IJwtService jwtService, IMapper mapper)
+    public AuthApplication(
+        IUsersDomain usersDomain, 
+        IJwtService jwtService, 
+        IMapper mapper, 
+        IAppLogger<AuthApplication> logger)
     {
         _usersDomain = usersDomain;
         _jwtService = jwtService;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<Response<TokenDto>> SignInAsync(SignInDto signInDto)
@@ -30,6 +37,7 @@ public class AuthApplication : IAuthApplication
             if (user == null)
             {
                 response.Message = "O endereço de e-mail não existe ou não está cadastrado.";
+                _logger.LogError("Falha na validação email. Error: {Message}", response.Message);
                 return response;
             }
 
@@ -37,6 +45,7 @@ public class AuthApplication : IAuthApplication
             if (!isValidPassword)
             {
                 response.Message = "Credenciais inválidas";
+                _logger.LogError("Falha na validação senha. Error: {Message}", response.Message);
                 return response;
             }
 
@@ -48,6 +57,7 @@ public class AuthApplication : IAuthApplication
             };
 
             response.IsSuccess = true;
+            _logger.LogInformation("Autenticação bem-sucedida para o usuário: {Email}", signInDto.Email);
             response.Message = "Autenticação bem-sucedida";
         }
         catch (Exception e)
@@ -67,6 +77,7 @@ public class AuthApplication : IAuthApplication
             if (existingUser != null)
             {
                 response.Message = "O usuário já existe.";
+                _logger.LogError("Falha na criação do usuário. Error: {Message}", response.Message);
                 return response;
             }
 
@@ -76,6 +87,7 @@ public class AuthApplication : IAuthApplication
             if (response.Data)
             {
                 response.IsSuccess = true;
+                _logger.LogInformation("Usuário criado com sucesso: {Email}", signUpDto.Email);
                 response.Message = "Usuário criado com sucesso";
             }
         }
