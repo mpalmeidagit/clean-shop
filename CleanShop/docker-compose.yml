@@ -1,0 +1,60 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: cleanshop-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      MSSQL_COLLATION: Latin1_General_CI_AS
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+      - ./database/backup:/var/opt/mssql/backup:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q \"SELECT 1\" -b -o /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    restart: unless-stopped
+
+  # Restaura o Northwind do backup (somente se ainda não existir) e encerra
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: cleanshop-sqlserver-init
+    environment:
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+    volumes:
+      - ./database:/scripts:ro
+    entrypoint: ["/bin/bash", "-c", "/opt/mssql-tools18/bin/sqlcmd -C -S sqlserver -U sa -P \"$$MSSQL_SA_PASSWORD\" -b -i /scripts/restore-northwind.sql"]
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    restart: "no"
+
+  cleanshop-api:
+    image: cleanshop-api:latest
+    container_name: cleanshop-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    # Segredos (Jwt__Key etc.) vêm do .env local, que não vai para o Git
+    env_file:
+      - .env
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # Dentro da rede do Docker o banco é acessado pelo nome do serviço
+      ConnectionStrings__NorthwindConnection: Server=sqlserver,1433;Database=Northwind;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True;
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      sqlserver-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  sqlserver-data:
