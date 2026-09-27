@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/logs/
+**/.vs/
+**/.vscode/
+**/*.user
+**/.env
+**/.env.*
+Test/
+Dockerfile
+docker-compose.yml
+.dockerignore

@@ -1,6 +1,10 @@
 using CleanShop.WebApi.Modules;
 using Serilog;
 
+// Carrega os segredos do arquivo .env (local, fora do Git) como variáveis de ambiente.
+// NoClobber: variáveis já definidas (Docker, servidor) têm prioridade sobre o arquivo.
+DotNetEnv.Env.NoClobber().TraversePath().Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddWebApi();

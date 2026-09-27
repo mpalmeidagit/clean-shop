@@ -19,6 +19,9 @@ public static class AuthenticationExtensions
     {
         // JWT Configuration
         var jwtSettings = configuration.GetSection("Jwt");
+        var key = jwtSettings["Key"]
+            ?? throw new InvalidOperationException("Configuração 'Jwt:Key' não encontrada. Defina Jwt__Key no arquivo .env ou como variável de ambiente.");
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -30,7 +33,7 @@ public static class AuthenticationExtensions
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
                     ClockSkew = TimeSpan.Zero
                 };
             });
