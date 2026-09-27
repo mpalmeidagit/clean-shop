@@ -1,4 +1,5 @@
 ﻿using CleanShop.Application.Interface;
+using CleanShop.Transversal.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -11,6 +12,9 @@ public static class ConfigureServices
         public IServiceCollection AddApplicationServices()
         {
             services.AddScoped<ICustomersApplication, CustomersApplication>();
+            services.AddScoped<IAuthApplication, AuthApplication>();
+            services.AddScoped<IJwtService, JwtService>();
+
             services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
 
             return services;

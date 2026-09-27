@@ -9,6 +9,7 @@ public class MappingsProfile : Profile
     public MappingsProfile()
     {
         CreateMap<Customer, CustomerDto>().ReverseMap();
+        CreateMap<User, SignUpDto>().ReverseMap();
 
         //CreateMap<Customer, CustomerDto>().ReverseMap()
         //.ForMember(destination => destination.CustomerId, source => source.MapFrom(src => src.CustomerId))

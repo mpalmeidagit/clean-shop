@@ -3,6 +3,7 @@ using CleanShop.Domain.Core;
 using CleanShop.Infrastructure.Repository;
 using CleanShop.WebApi.Modules.Cors;
 using CleanShop.WebApi.Modules.Swagger;
+using CleanShop.WebApi.Modules.Authentication;
 
 namespace CleanShop.WebApi.Modules;
 
@@ -24,6 +25,7 @@ public static class WebApiExtensions
             builder.Services.AddDomainServices();
             builder.Services.AddInfrastructureServices();
             builder.Services.AddApplicationServices();
+            builder.Services.AddAuth(builder.Configuration);
 
             builder.AddSwagger();
             builder.AddCorsPolicy();
@@ -42,6 +44,7 @@ public static class WebApiExtensions
         {
             app.UseSwaggerDocumentation();
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseCorsPolicy();
             app.UseAuthorization();
             app.MapControllers();

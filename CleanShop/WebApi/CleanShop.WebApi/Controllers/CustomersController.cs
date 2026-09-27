@@ -1,6 +1,7 @@
 ﻿using CleanShop.Application.DTO;
 using CleanShop.Application.Interface;
 using CleanShop.Transversal.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
@@ -10,6 +11,8 @@ namespace CleanShop.WebApi.Controllers;
 /// <summary>
 /// 
 /// </summary>
+/// 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 [SwaggerTag("Transações relacionadas ao cliente")]

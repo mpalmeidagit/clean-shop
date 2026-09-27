@@ -10,6 +10,7 @@ public static class ConfigureServices
         public IServiceCollection AddDomainServices()
         {
             services.AddScoped<ICustomersDomain, CustomersDomain>();
+            services.AddScoped<IUsersDomain, UsersDomain>();
 
             return services;
         }

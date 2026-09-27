@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi;
 using System.Reflection;
 
@@ -40,6 +41,21 @@ public static class SwaggerExtensions
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                const string schemeName = "Bearer";
+
+                c.AddSecurityDefinition(schemeName, new OpenApiSecurityScheme
+                {
+                    Description = "Digitar JWT Bearer token **_only_**",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
+
+                c.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference(schemeName, document)] = []
+                });
 
                 c.EnableAnnotations();
             });
