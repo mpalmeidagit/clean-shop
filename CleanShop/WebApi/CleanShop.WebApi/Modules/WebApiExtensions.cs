@@ -4,6 +4,8 @@ using CleanShop.Infrastructure.Repository;
 using CleanShop.WebApi.Modules.Cors;
 using CleanShop.WebApi.Modules.Swagger;
 using CleanShop.WebApi.Modules.Authentication;
+using CleanShop.Transversal.Logging;
+using Serilog;
 
 namespace CleanShop.WebApi.Modules;
 
@@ -26,6 +28,7 @@ public static class WebApiExtensions
             builder.Services.AddInfrastructureServices();
             builder.Services.AddApplicationServices();
             builder.Services.AddAuth(builder.Configuration);
+            builder.Services.AddTransversalServices(builder.Configuration);        
 
             builder.AddSwagger();
             builder.AddCorsPolicy();
@@ -42,6 +45,7 @@ public static class WebApiExtensions
         /// </summary>
         public WebApplication UseWebApi()
         {
+            app.UseSerilogRequestLogging();
             app.UseSwaggerDocumentation();
             app.UseHttpsRedirection();
             app.UseAuthentication();

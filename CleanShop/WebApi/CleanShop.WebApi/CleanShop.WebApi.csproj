@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\Infrastructure\CleanShop.Infrastructure.Interface\CleanShop.Infrastructure.Interface.csproj" />
     <ProjectReference Include="..\..\Infrastructure\CleanShop.Infrastructure.Repository\CleanShop.Infrastructure.Repository.csproj" />
     <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Common\CleanShop.Transversal.Common.csproj" />
+    <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Logging\CleanShop.Transversal.Logging.csproj" />
     <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Mapper\CleanShop.Transversal.Mapper.csproj" />
   </ItemGroup>
 
