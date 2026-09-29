@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\Transversal\CleanShop.Transversal.Logging\CleanShop.Transversal.Logging.csproj" />
     <ProjectReference Include="..\CleanShop.Application.DTO\CleanShop.Application.DTO.csproj" />
     <ProjectReference Include="..\CleanShop.Application.Interface\CleanShop.Application.Interface.csproj" />
+    <ProjectReference Include="..\CleanShop.Application.Validator\CleanShop.Application.Validator.csproj" />
   </ItemGroup>
 
 </Project>
