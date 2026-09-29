@@ -6,6 +6,7 @@ using CleanShop.WebApi.Modules.Swagger;
 using CleanShop.WebApi.Modules.Authentication;
 using CleanShop.Transversal.Logging;
 using Serilog;
+using CleanShop.WebApi.Modules.Validator;
 
 namespace CleanShop.WebApi.Modules;
 
@@ -28,7 +29,9 @@ public static class WebApiExtensions
             builder.Services.AddInfrastructureServices();
             builder.Services.AddApplicationServices();
             builder.Services.AddAuth(builder.Configuration);
-            builder.Services.AddTransversalServices(builder.Configuration);        
+            builder.Services.AddTransversalServices(builder.Configuration);
+            builder.Services.AddValidator();
+     
 
             builder.AddSwagger();
             builder.AddCorsPolicy();
